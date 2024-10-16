@@ -1,0 +1,42 @@
+runtime: python
+env: flex
+
+runtime_config:
+  operating_system: ubuntu22
+
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 1
+
+env_variables:
+  NODE_VERSION: "18.x"
+
+
+handlers:
+  - url: /.*
+    static_files: dist/seguros-confianza/index.html
+    upload: dist/seguros-confianza/index.html
+
+  - url: /static
+    static_dir: dist/seguros-confianza
+
+    
+
+skip_files:
+  - ^node_modules/
+  - ^.*/node_modules/
+  - ^src/
+  - ^e2e/
+  - ^\.git/
+  - ^\.vscode/
+  - ^\.angular/
+  - ^coverage/
+  - ^.*\.json$
+  - ^.*\.md$
+  - ^LICENSE
+  - ^(.*/)?#.*#$
+  - ^(.*/)?.*~$
+  - ^(.*/)?.*\.py[co]$
+  - ^(.*/)?.*/RCS/.*$
+  - ^(.*/)?\..*$
+  - ^(.*/)?.*\.bak$
