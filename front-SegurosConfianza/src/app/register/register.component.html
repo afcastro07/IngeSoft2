@@ -1,6 +1,52 @@
-<form (ngSubmit)="register()">
-  <input type="text" [(ngModel)]="username" name="username" placeholder="Username" required>
-  <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
-  <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required>
-  <button type="submit">Register</button>
-</form>
+<div class="form-wrapper">
+  <h2>Registro</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="register()" class="auth-form">
+    <div class="form-group">
+      <input 
+        type="text" 
+        formControlName="username" 
+        placeholder="Nombre de usuario"
+        [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
+      >
+      <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+        <div *ngIf="f['username'].errors['required']">El nombre de usuario es requerido</div>
+        <div *ngIf="f['username'].errors['minlength']">El nombre debe tener al menos 3 caracteres</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input 
+        type="email" 
+        formControlName="email" 
+        placeholder="Email"
+        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+      >
+      <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+        <div *ngIf="f['email'].errors['required']">El email es requerido</div>
+        <div *ngIf="f['email'].errors['email']">Debe ingresar un email válido</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input 
+        type="password" 
+        formControlName="password" 
+        placeholder="Contraseña"
+        [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+      >
+      <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+        <div *ngIf="f['password'].errors['required']">La contraseña es requerida</div>
+        <div *ngIf="f['password'].errors['minlength']">La contraseña debe tener al menos 6 caracteres</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <select formControlName="role" class="form-control">
+        <option value="COMPRADOR">Comprador</option>
+        <option value="ASESOR">Asesor</option>
+      </select>
+    </div>
+
+    <button type="submit" class="submit-btn">Registrarse</button>
+  </form>
+</div>
