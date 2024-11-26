@@ -1,0 +1,224 @@
+<div id="cotizador">
+
+  <div class="max-w-screen-2xl mx-auto p-6 bg-white shadow-md rounded-md formulario">
+    <form>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="mb-4">
+          <label for="nombre" class="block text-sm font-medium">Nombre</label>
+          <input type="text" id="nombre" name="nombreCliente" required [(ngModel)]="nombreCliente"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+        </div>
+
+        <div class="mb-4">
+          <label for="apellido" class="block text-sm font-medium">Apellido</label>
+          <input type="text" id="apellido" name="apellidoCliente" [(ngModel)]="apellidoCliente" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+        </div>
+
+        <div class="mb-4">
+          <label for="correo" class="block text-sm font-medium">Correo Electrónico</label>
+          <input type="email" id="correo" name="correoCliente" [(ngModel)]="correoCliente"  required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+        </div>
+
+        <div class="mb-4">
+          <label for="celular" class="block text-sm font-medium">Número de Celular</label>
+          <input type="tel" id="celular" name="celularCliente"  [(ngModel)]="celularCliente" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+        </div>
+
+
+        <div class="mb-4">
+          <label for="tipoVehiculo" class="block text-sm font-medium">Tipo de Vehículo</label>
+          <select id="tipoVehiculo" name="tipoVehiculo" [(ngModel)]="tipoVehiculo" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            (change)="onTipoVehiculoChange($event)">
+            <option value="">Selecciona una opción</option>
+            <option value="Automovil">Automóvil</option>
+            <option value="Moto">Moto</option>
+            <option value="Carro Híbrido">Carro Híbrido</option>
+          </select>
+        </div>
+
+
+        <!-- Campo de Placa -->
+        <div class="mb-4 col-span-1 placaB">
+          <label for="tipoVehiculo" class="block text-sm font-medium placaL">¿Tiene Placa?</label>
+          <label class="inline-flex items-center cursor-pointer">
+            <input type="checkbox" class="sr-only peer" (change)="changePlaca()" [checked]="tienePlaca"/>
+            <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+          </label>
+          
+        </div>
+        <div class="mb-4 col-span-1" [ngClass]="{'hidden': !tienePlaca}">
+          <label for="placaVehiculo" class="block text-sm font-medium">Número de Placa</label>
+          <input type="text" id="placaVehiculo" name="placaVehiculo" [(ngModel)]="placaVehiculo" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+        </div>
+
+        <!-- El campo de Marca se llenará con datos de la API -->
+        <div class="mb-4">
+          <label for="marca" class="block text-sm font-medium">Marca</label>
+          <select id="marca" name="marcaVehiculo" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" 
+            (change)="onMarcaChange($event)" [(ngModel)]="marcaVehiculo">
+            <option value="">Selecciona una marca</option>
+            <option *ngFor="let marca of filteredMarcas" [value]="marca">
+              {{ marca }} <!-- Muestra el nombre de la marca -->
+            </option>
+          </select>
+        </div>
+        
+        <!-- Campo de Modelo y Año -->
+        <div class="mb-4">
+          <label for="modelo" class="block text-sm font-medium">Modelo</label>
+          <select id="modelo" name="modeloVehiculo" [(ngModel)]="modeloVehiculo" required
+          (change)="onReferenciaChange($event)"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            <option value="">Selecciona un modelo</option>
+            <option *ngFor="let referencia of referencias" [value]="referencia"> <!-- Cambiado a referencia.Referencia1 -->
+              {{ referencia }} <!-- Cambiado a referencia.Referencia1 -->
+            </option>
+          </select>
+        </div>
+        
+        
+        <div class="mb-4">
+          <label for="ano" class="block text-sm font-medium">Año</label>
+          <select id="ano" name="anioVehiculo" [(ngModel)]="anioVehiculo" required
+          (change)="onAnoChange($event)"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            <option value="">Selecciona un año</option>
+            <option *ngFor="let ano of anosDisponibles" [value]="ano">
+              {{ ano }}
+            </option>
+          </select>
+        </div>
+        
+
+        <div class="mb-4">
+          <label for="tipoCobertura" class="block text-sm font-medium">Tipo de Cobertura</label>
+          <select id="tipoCobertura" name="tipoCobertura" [(ngModel)]="tipoCobertura" required
+          (change)="onTipoCoberturaChange($event)"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            <option value="">Selecciona una cobertura</option>
+            <option value="basica">Básica</option>
+            <option value="media">Media</option>
+            <option value="completa">Completa</option>
+          </select>
+        </div>
+        
+    <!-- Autorizaciones -->
+    <div class="mb-4 col-span-2">
+      <label class="inline-flex items-center">
+        <input type="checkbox" name="autorizoDatos" required class="mr-2" />
+        <span class="text-sm">Autorizo el tratamiento de datos personales *</span>
+      </label>
+    </div>
+
+    <div class="mb-4 col-span-2">
+      <label class="inline-flex items-center">
+        <input type="checkbox" name="autorizoUtilizacion" required class="mr-2" />
+        <span class="text-sm">Autorizo la utilización de mis datos personales para fines comerciales *</span>
+      </label>
+    </div>
+
+  </div>
+
+  <div class="mt-6">
+    <button (click)="onCotizar()" type="button" 
+      class="btn-cotizar w-full bg-indigo-600 text-white px-3 py-2 rounded-md shadow-sm hover:bg-indigo-700">
+      Cotizar
+    </button>
+  </div>
+
+  <div class="mb-4 hidden">
+    <label for="valorSeguro" class="block text-sm font-medium">valorFinal</label>
+    <input type="number" id="valorSeguro" name="valorSeguro" [(ngModel)]="valorSeguro" 
+      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+  </div>
+
+  <div class="mb-4 hidden">
+    <label for="numeroPoliza" class="block text-sm font-medium">poliza</label>
+    <input type="number" id="numeroPoliza" name="numeroPoliza" [(ngModel)]="numeroPoliza" 
+      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+  </div>
+
+    <app-popup
+      *ngIf="showPopup"
+      [nombreCliente]="nombreCliente"
+      [apellidoCliente]="apellidoCliente"
+      [correoCliente]="correoCliente"
+      [celularCliente]="celularCliente"
+      [tipoVehiculo]="tipoVehiculo"
+      [marcaVehiculo]="marcaVehiculo"
+      [modeloVehiculo]="modeloVehiculo"
+      [anioVehiculo]="anioVehiculo"
+      [tipoCoberturaVehiculo]="tipoCobertura"
+      [valorSeguro]="valorSeguro"
+      [isCotizacion]="isCotizacion"
+      [numeroPoliza]="numeroPoliza"
+      [placaVehiculo]="placaVehiculo"
+      (close)="closePopup()"
+      (buy)="onBuy()">
+    </app-popup>
+    </form>
+
+    <!-- Resultado de la cotización -->
+
+
+  </div>
+
+  <div class="imagen">
+    <div class="text-center">
+      <h2 class="text-2xl font-bold mb-4">¡Bienvenido a Seguros Confianza!</h2>
+      <p class="text-lg">¿Estás buscando la mejor protección para tu vehículo? ¡Estás en el lugar correcto! Nuestro
+        cotizador de seguros vehiculares te permitirá obtener una estimación rápida y precisa del seguro que mejor se
+        adapte a tus necesidades.</p>
+
+    </div>
+    <img src="img/imgCotizador.jpg" alt="Seguros Confianza" />
+    </div>
+
+</div>
+
+<!-- Planes de Seguro -->
+<div id="planes">
+    <div class="mt-8 planes">
+      <h2 class="text-2xl font-semibold mb-6">Nuestros Planes de Seguro</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Tarjeta 1 -->
+        <div class="bg-white shadow-md rounded-lg p-6 text-center">
+          <div class="mb-4">
+            <i class="fas fa-car fa-3x text-indigo-600"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Plan Básico</h3>
+          <p class="mt-2 text-gray-600">Este plan es ideal para conductores ocasionales que buscan una opción económica y segura. Incluye cobertura por daños a terceros, que es obligatoria en Colombia, además de asistencia en carretera las 24 horas. Protege tu patrimonio sin gastar de más.</p>
+
+        </div>
+    
+        <!-- Tarjeta 2 -->
+        <div class="bg-white shadow-md rounded-lg p-6 text-center">
+          <div class="mb-4">
+            <i class="fas fa-shield-alt fa-3x text-indigo-600"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Plan Medio</h3>
+          <p class="mt-2 text-gray-600">El plan medio ofrece una cobertura más completa, ideal para quienes utilizan su vehículo a diario. Además de la cobertura obligatoria de daños a terceros, incluye protección por daños propios y asistencia en carretera. Es la mejor opción para quienes desean un equilibrio entre costo y beneficios, brindando tranquilidad en el día a día.</p>
+
+        </div>
+    
+        <!-- Tarjeta 3 -->
+        <div class="bg-white shadow-md rounded-lg p-6 text-center">
+          <div class="mb-4">
+            <i class="fas fa-star fa-3x text-indigo-600"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Plan Completo</h3>
+          <p class="mt-2 text-gray-600">Para quienes buscan la máxima tranquilidad y protección, este plan completo cubre todos los aspectos relevantes. Incluye cobertura por daños a terceros, daños propios, robo y asistencia en carretera, así como una variedad de beneficios adicionales, como el servicio de carro taller y la posibilidad de cobertura internacional. Este plan es perfecto para quienes valoran su seguridad y la de su familia.</p>
+
+        </div>
+      </div>
+    </div>
+</div>
+    
+
+

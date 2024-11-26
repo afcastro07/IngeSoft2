@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --black: #000;
+    --white: #fff;
+    --light: #E5E5E5;
+    --orange: #f2994a;
+    --blue: #002f6c;
+    --green: #556b2f;
+    --font-family-title: 'Roboto', sans-serif;
+    --font-family-body: 'Open Sans', sans-serif;
+    --dark_overlay: rgba(20, 20, 20, 0.4);
+}
+
+html, body {
+    font-family: var(--font-family-body);
+    font-size: 16px;
+    color: var(--black);
+    margin: 0;
+    padding: 0;
+
+}
+h2 {
+    font-family: var(--font-family-title);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blue);
+}
+
+p {
+    font-family: var(--font-family-body);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--black);
+}
+
+ul, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

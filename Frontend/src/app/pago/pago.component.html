@@ -1,0 +1,222 @@
+<div id="FPago">
+    <div class="formP max-w-7xl mx-auto p-12 bg-white shadow-xl rounded-md">
+      <form novalidate>
+        <h2 class="text-3xl font-bold mb-4 text-center">Checkout</h2>
+        <p class="text-center text-gray-500">
+          Por favor diligencia los campos faltantes y verifica tu información para continuar el pago
+        </p>
+  
+        <!-- Datos del Cliente -->
+        <div class="client-data space-y-8">
+          <h3 class="text-1xl font-bold mb-4 text-left">Datos del Cliente</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 campos">
+            <div class="form-group">
+              <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                value=""
+              />
+            </div>
+            <div class="form-group">
+              <label for="apellido" class="block text-sm font-medium text-gray-700">Apellido</label>
+              <input
+                type="text"
+                id="apellido"
+                name="apellido"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                value=""
+              />
+            </div>
+            <div class="form-group">
+              <label for="tipoDocumento" class="block text-sm font-medium text-gray-700">Tipo de Documento</label>
+              <select
+                id="tipoDocumento"
+                name="tipoDocumento"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+              >
+                <option value="CC">Cédula de Ciudadanía</option>
+                <option value="TI">Tarjeta de Identidad</option>
+                <option value="RC">Registro Civil</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="numeroDocumento" class="block text-sm font-medium text-gray-700">Número de Documento</label>
+              <input
+                type="text"
+                id="numeroDocumento"
+                name="numeroDocumento"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                value=""
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="form-group">
+              <label for="telefono" class="block text-sm font-medium text-gray-700">Teléfono</label>
+              <input
+                type="text"
+                id="telefono"
+                name="telefono"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                value=""
+              />
+            </div>
+            <div class="form-group">
+              <label for="direccion" class="block text-sm font-medium text-gray-700">Dirección</label>
+              <input
+                type="text"
+                id="direccion"
+                name="direccion"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                value=""
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="correoPago" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+            <input
+              type="email"
+              id="correoPago"
+              name="correoPago"
+              required
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+              value=""
+            />
+          </div>
+        </div>
+  
+        <!-- Datos del Vehículo -->
+        <div class="vehicle-data space-y-8 mt-12">
+          <h3 class="text-1xl font-bold mb-4 text-left">Vehículo</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 campos">
+            <div class="form-group">
+              <label for="marca" class="block text-sm font-medium text-gray-700">Marca</label>
+              <input
+                type="text"
+                id="marca"
+                name="marca"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                value=""
+                disabled
+              />
+            </div>
+            <div class="form-group">
+              <label for="modelo" class="block text-sm font-medium text-gray-700">Modelo</label>
+              <input
+                type="text"
+                id="modelo"
+                name="modelo"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                value=""
+                disabled
+              />
+            </div>
+            <div class="form-group">
+              <label for="anio" class="block text-sm font-medium text-gray-700">Año</label>
+              <input
+                type="number"
+                id="anio"
+                name="anio"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                value=""
+                disabled
+              />
+            </div>
+            <div class="form-group">
+              <label for="tipoCobertura" class="block text-sm font-medium text-gray-700">Tipo de Cobertura</label>
+              <select
+                id="tipoCobertura"
+                name="tipoCobertura"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                disabled
+              >
+                <option value="">Selecciona una cobertura</option>
+                <option value="basica">Básica</option>
+                <option value="media">Media</option>
+                <option value="completa">Completa</option>
+              </select>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Datos de Pago -->
+        <div class="payment-data space-y-8 mt-12">
+          <h3 class="text-1xl font-bold mb-4 text-left">Pago</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 campos">
+            <div class="form-group">
+              <label for="valorAPagar" class="block text-sm font-medium text-gray-700">Valor a Pagar</label>
+              <input
+                type="number"
+                id="valorAPagar"
+                name="valorAPagar"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                value="0"
+              />
+            </div>
+            <div class="form-group">
+              <label for="tipoPago" class="block text-sm font-medium text-gray-700">Forma de Pago</label>
+              <select
+                id="tipoPago"
+                name="tipoPago"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+              >
+                <option value="tarjeta">Tarjeta de Crédito</option>
+                <option value="PSE">PSE</option>
+              </select>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Términos y Condiciones -->
+        <div class="terms-conditions space-y-4 mt-8">
+          <div class="form-group">
+            <label class="inline-flex items-center text-sm font-medium text-gray-700">
+              <input
+                type="checkbox"
+                id="terms"
+                name="terms"
+                required
+                class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out mr-2"
+              />
+              <span class="text-sm">
+                Acepto los <a href="#" class="text-indigo-600">términos y condiciones</a>
+              </span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="inline-flex items-center text-sm font-medium text-gray-700">
+              <input
+                type="checkbox"
+                id="privacy"
+                name="privacy"
+                required
+                class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out mr-2"
+              />
+              <span class="text-sm">Autorizo el tratamiento de mis datos personales</span>
+            </label>
+          </div>
+        </div>
+  
+        <!-- Botón de Envío -->
+        <div class="submit-section mt-12">
+          <button
+            type="submit"
+            class="w-full bg-indigo-600 text-white px-6 py-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500 text-lg btn-cotizar"
+          >
+            Realizar Pago
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

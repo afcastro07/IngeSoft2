@@ -1,0 +1,14 @@
+runtime: python39  # Usando Python 3.9
+entrypoint: gunicorn -b :$PORT segurosConfianza.wsgi  # Comando para iniciar el proyecto Django
+
+env_variables:
+  DJANGO_SETTINGS_MODULE: "segurosConfianza.settings"  # Reemplaza con tu configuración de Django
+  GOOGLE_CLOUD_PROJECT: "segurosconfianzapj"  # Tu ID de proyecto de Google Cloud
+
+instance_class: F2  # Clase de instancia (ajustala si es necesario)
+
+handlers:
+  - url: /static
+    static_dir: static  # Asegúrate de que esta ruta sea correcta
+  - url: /.*  # Redirige todas las solicitudes al servidor de Django
+    script: auto

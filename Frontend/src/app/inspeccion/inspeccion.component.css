@@ -1,0 +1,15 @@
+:host {
+    top: 0px;
+    display: block;
+    position: relative;
+  }
+
+#inpeccion {
+    top: 170px;
+    position: relative;
+    background: url('/img/head.jpg') no-repeat center top;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}

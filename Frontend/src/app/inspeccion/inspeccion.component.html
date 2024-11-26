@@ -1,0 +1,59 @@
+  <div id="inpeccion">
+    <div class="max-w-screen-2xl mx-auto p-6 bg-white shadow-md rounded-md formulario">
+      <form novalidate class="ng-untouched ng-pristine ng-valid">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="mb-4 w-full">
+            <label for="nombreCliente" class="block text-sm font-medium">Nombre</label>
+            <input type="text" id="nombreCliente" name="nombreCliente" disabled value="nombreCliente" [ngModel]="nombreCliente"
+             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" value=" ">
+          </div>
+          <div class="mb-4">
+            <label for="numeroIdentificacionCliente" class="block text-sm font-medium">Número de Identificación</label>
+            <input type="text" id="numeroIdentificacionCliente" name="numeroIdentificacionCliente" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ng-untouched ng-pristine ng-valid">
+          </div>
+          <div class="mb-4">
+            <label for="placaVehiculo" class="block text-sm font-medium">Placa</label>
+            <input type="text" id="placaVehiculo" name="placaVehiculo" value="placaVehiculo" [ngModel]="placaVehiculo" disabled
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ng-untouched ng-pristine" disabled>
+          </div>
+          <div class="mb-4">
+            <label for="fecha" class="block text-sm font-medium">Fecha</label>
+            <input type="date" [min]="getMinFecha()"  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" min="2024-11-26">
+          </div>
+          <div class="mb-4">
+            <label for="hora" class="block text-sm font-medium">Hora</label>
+            <select [(ngModel)]="actualizarHorasDisponibles" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+              <option value="" disabled selected>Selecciona una hora</option> <!-- Opción por defecto -->
+              <option *ngFor="let hora of horasDisponibles" [value]="hora">{{ hora }}</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label for="lugar" class="block text-sm font-medium">Lugar</label>
+            <select class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+              <option value>Selecciona un lugar</option>
+              <option value="Sede Norte">Sede Norte</option>
+              <option value="Sede Centro">Sede Centro</option>
+              <option value="Sede Chapinero">Sede Chapinero</option>
+              <option value="Sede Sur">Sede Sur</option>
+            </select>
+          </div>
+        </div>
+        <div class="mt-6">
+          <button type="button" class="w-full bg-indigo-600 text-white px-3 py-2 rounded-md shadow-sm hover:bg-indigo-700" disabled>Agendar Inspección</button>
+        </div>
+      </form>
+    </div>
+    <div class="imagen">
+      <div class="text-left">
+        <h2 class="text-2xl font-bold mb-4 text-center">Inspección Vehicular</h2>
+        <p class="text-lg">En <span>Seguros Confianza</span> estamos comprometidos con tu seguridad, agenda la inspección de tu vehículo en alguna de las siguientes sedes:</p>
+        <ul class="text-lg">
+          <br>
+          <li><b>Norte:</b> <a href="https://maps.app.goo.gl/33iqkU4qdRwqnD1r9" target="_blank" alt="Ver dirección">Cra.18 #164-44 – Toberín Bogotá</a></li>
+          <li><b>Centro:</b> <a href="https://maps.app.goo.gl/NCRb3pUA2VLqRPsg7" target="_blank" alt="Ver dirección">Calle 12b #44-08</a></li>
+          <li><b>Chapinero:</b> <a href="https://maps.app.goo.gl/38EiWiW9HaGGB1Yr9" target="_blank" alt="Ver dirección">Av. Caracas 14 # 60 - 35 / 37</a></li>
+          <li><b>Sur:</b> <a href="https://maps.app.goo.gl/5qV2HcAj6CfFmqn27" target="_blank" alt="Ver dirección">Ac 57 R Sur, Madelena #64 - 88</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,42 @@
+<div id="agradecimiento">
+    <div>
+      <h2 class="text-3xl font-semibold mb-6 text-center">¡Gracias por su compra!</h2>
+      <p class="mt-2 text-gray-600 w-[60%] mx-auto text-center">
+        A continuación encontrará los detalles de su póliza, adicional, para ingresar al portal de usuario su contraseña provisional es su número de póliza, al momento de ingresar podrá cambiar la contraseña.
+      </p>
+      <div class="space-y-4 w-[30%] mx-auto informacion">
+        <div class="flex justify-between">
+          <span class="font-medium text-gray-700">Nombre:</span>
+          <span class="text-gray-600">{{ cliente.nombre }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-medium text-gray-700"># Póliza:</span>
+          <span class="text-gray-600">{{ seguro.numeroPoliza }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-medium text-gray-700">Fecha de Inicio:</span>
+          <span class="text-gray-600">{{ seguro.fechaInicio }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-medium text-gray-700">Fecha de Finalización:</span>
+          <span class="text-gray-600">{{ seguro.fechaFin }}</span>
+        </div>
+      </div>
+      <div class="mt-6 flex justify-between w-[30%] mx-auto finalizarB">
+        <button
+          type="button"
+          class="botonSalir py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+          (click)="finalizar()"
+        >
+          Finalizar
+        </button>
+        <button
+          type="button"
+          class="botonComprar text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          (click)="generatePdf()"
+        >
+          Descargar PDF
+        </button>
+      </div>
+    </div>
+  </div>
