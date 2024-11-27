@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InspeccionService } from './inspeccion.service';
+import { ParametrosService } from '../cotizador/parametrosService';
 
 @Component({
   selector: 'app-popup',
@@ -40,8 +41,14 @@ export class PopupComponent {
 
   
 
-  constructor(private router: Router, private inspeccionService: InspeccionService) {}
+  constructor(private router: Router, private inspeccionService: InspeccionService, private parametrosService: ParametrosService) {}
 
+  ngOnInit(): void {
+    this.parametrosService.placaVehiculo$.subscribe(placa => {
+      this.placaVehiculo = placa;
+    });
+  }
+  
   onClose(): void {
     this.close.emit();
   }
@@ -98,7 +105,7 @@ export class PopupComponent {
       response => {
         console.log('Inspección registrada exitosamente', response);
         alert('La inspección ha sido registrada exitosamente.');
-        this.router.navigate(['/inspeccion']);
+        this.router.navigate(['/cotizar']);
       },
       error => {
         console.error('Error al registrar la inspección', error);
@@ -106,7 +113,7 @@ export class PopupComponent {
       }
     );
 
-    this.router.navigate(['/cotizar']);
+    
   }
 
   finalizarCompra(): void {

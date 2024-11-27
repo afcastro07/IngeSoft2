@@ -1,4 +1,5 @@
 from django.db import models
+from rest_framework import serializers
 
 class Facecolda(models.Model):
     codigo = models.CharField(max_length=20, primary_key=True)
@@ -73,3 +74,4 @@ class Facecolda(models.Model):
 
     def __str__(self):
         return f"{self.marca} {self.referencia1} {self.referencia2} {self.referencia3}"
+    

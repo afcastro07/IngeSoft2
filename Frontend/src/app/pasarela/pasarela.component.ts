@@ -45,10 +45,12 @@ export class PasarelaPagoComponent {
   ngOnInit(): void {
     // Suscribirse a los valores del servicio
     this.parametrosService.numeroPoliza$.subscribe(numeroPoliza => this.numeroPoliza = numeroPoliza);
+    this.parametrosService.tipoVehiculo$.subscribe(tipoVehiculo => this.tipoVehiculo = tipoVehiculo);
   }
 
   onClose(): void {
     this.close.emit();
+    this.showPopup = false;
   }
 
   
@@ -84,6 +86,7 @@ export class PasarelaPagoComponent {
       direccion: this.direccion,
       contraseña: this.numeroPoliza,
       fecha_registro: formatDateTime(new Date()),
+
     }
 
     const dataPoliza = {
@@ -91,7 +94,7 @@ export class PasarelaPagoComponent {
       tipo_cobertura: this.tipoCoberturaVehiculo,
       valor_asegurado: this.valorAPagar,
       fecha_inicio: formatDate(new Date()),
-      fecha_fin: formatDate(new Date(new Date().setFullYear(new Date().getFullYear() + 1))),
+      fecha_caducidad: formatDate(new Date(new Date().setFullYear(new Date().getFullYear() + 1))),
       estado: 'activa',
     }
 
@@ -100,8 +103,8 @@ export class PasarelaPagoComponent {
       tipo_vehiculo: this.tipoVehiculo,
       marca_vehiculo: this.marca,
       modelo_vehiculo: this.modelo,
-      anio_vehiculo: this.anio,
-      placa_vehiculo: this.placa,
+      ano_vehiculo: this.anio,
+      placa_vehiculo: "0000",
     }
 
     console.log(dataUsuario);
@@ -116,6 +119,8 @@ export class PasarelaPagoComponent {
             this.PasarelaService.crearVehiculo(dataVehiculo).subscribe(
               response => {
                 console.log('Todo creado correctamente', response);
+                alert('Pago Completado');
+                this.router.navigate(['/pagocompletado']);
               }, error => {
                 console.error('Error al crear el vehículo', error);
               })
@@ -126,8 +131,7 @@ export class PasarelaPagoComponent {
             console.error('Error al crear el usuario', error);
       })
 
-      /* Redirigir a pdf */
-      this.router.navigate(['/pagocompletado']);
+
 
 
     

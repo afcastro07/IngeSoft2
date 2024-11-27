@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class CotizadorService {
-  private apiUrl = `${environment.BASE_PATH}/api/facecolda`;  // URL de tu API
+  private apiUrl = `${environment.BASE_PATH}/api/facecolda/`;  // URL de tu API
   
   
 

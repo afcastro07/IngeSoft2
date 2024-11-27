@@ -117,7 +117,6 @@ export class PdfPolizaComponent implements OnInit {
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);  // Reset color to black
     doc.text(`Nombre: ${this.nombre} ${this.apellido}`, 20, 110);
-    doc.text(`Identificación: ${this.numeroDocumento}`, 20, 120);
     doc.text(`Correo: ${this.correo}`, 20, 130);
     doc.text(`Teléfono: ${this.telefono}`, 20, 140);
   
@@ -129,7 +128,6 @@ export class PdfPolizaComponent implements OnInit {
     // Vehicle Information
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);  // Reset color to black
-    doc.text(`Placa: ${this.placa}`, 20, 170);
     doc.text(`Marca: ${this.marca}`, 20, 180);
     doc.text(`Modelo: ${this.modelo}`, 20, 190);
     doc.text(`Año: ${this.anio}`, 20, 200);

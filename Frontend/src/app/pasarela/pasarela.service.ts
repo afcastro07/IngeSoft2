@@ -7,9 +7,9 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class PasarelaService {
-  private apiUrlUsuario = `${environment.BASE_PATH}/api/projects/creacionusuario`; 
-  private apiUrlPoliza = `${environment.BASE_PATH}/api/projects/poliza`; 
-  private apiVehiculo = `${environment.BASE_PATH}api/projects/vehiculo`; 
+  private apiUrlUsuario = `${environment.BASE_PATH}/api/usuario/`; 
+  private apiUrlPoliza = `${environment.BASE_PATH}/api/poliza/`; 
+  private apiVehiculo = `${environment.BASE_PATH}/api/vehiculo/`; 
 
 
 

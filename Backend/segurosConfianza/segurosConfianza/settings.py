@@ -128,41 +128,33 @@ LOGGING = {
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': '',
-        'NAME': '',        
-        'USER': '',                     
-        'PASSWORD': '',           
-        'HOST': '',                      
-        'PORT': '', 
-    },
-      
-    'inspeccion': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'SC-inspeccion-vehicular',        
-        'USER': 'developer',                     
-        'PASSWORD': '8)Dxe(ee2fIcX7~|',           
-        'HOST': '104.154.140.136',                      
-        'PORT': '3306', 
-    },  
-    
-    'facecolda': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ConsultasFasecolda',
-        'USER': 'Developer2',
-        'PASSWORD': '>YbiM^TbQdrkZ+li',
-        'HOST': '35.184.84.118',
-        'PORT': '3306',
-    },  
-    
-    'usuarioPoliza':{
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Users-SegurosConfianza',
-        'USER': 'Developer',
-        'PASSWORD': 'NK&/uP@H1X*`PSJ_',
-        'HOST': '35.203.101.58',
-        'PORT': '3306',
-    }, 
+        
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'SC-inspeccion-vehicular',        
+            'USER': 'developer',                     
+            'PASSWORD': '8)Dxe(ee2fIcX7~|',           
+            'HOST': '104.154.140.136',                      
+            'PORT': '3306', 
+        },  
+        
+        'facecolda': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'ConsultasFasecolda',
+            'USER': 'Developer2',
+            'PASSWORD': '>YbiM^TbQdrkZ+li',
+            'HOST': '35.184.84.118',
+            'PORT': '3306',
+        },  
+        
+        'usuarioPoliza':{
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'Users-SegurosConfianza',
+            'USER': 'Developer',
+            'PASSWORD': 'NK&/uP@H1X*`PSJ_',
+            'HOST': '35.203.101.58',
+            'PORT': '3306',
+        }, 
 }
 
 if not DATABASES['default']['ENGINE']:  # Si 'ENGINE' de 'default' está vacío
