@@ -1,0 +1,16 @@
+:host {
+    top: 0px;
+    display: block;
+    position: relative;
+  }
+
+#agradecimiento {
+    top: 170px;
+    position: relative;
+
+    .informacion{
+        margin-top: 2em;
+        border: 1px solid #b7b6b6;
+        padding: 1em;
+    }
+}

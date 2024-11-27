@@ -4,11 +4,13 @@ import { InspeccionComponent } from './inspeccion/inspeccion.component';
 
 import { PdfPolizaComponent } from './pdf-poliza/pdf-poliza.component';
 import { pagoComponent } from './pago/pago.component';
+import { PasarelaPagoComponent } from './pasarela/pasarela.component';
 
 export const routes: Routes = [
   { path: 'cotizar', component: CotizadorComponent },
   { path: 'inspeccion', component: InspeccionComponent },
   { path: 'checkout', component: pagoComponent },
   { path: 'pagocompletado', component: PdfPolizaComponent },
+  
   
 ];

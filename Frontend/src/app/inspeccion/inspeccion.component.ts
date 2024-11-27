@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
-import { PopupComponent } from '../popup/popup.component'; // Adjust the path as necessary
+import { PopupComponent } from '../popup/popup.component'; 
 import { FormsModule } from '@angular/forms';
 import { ParametrosService } from '../cotizador/parametrosService';
 import { InspeccionService } from '../popup/inspeccion.service';
@@ -23,9 +23,13 @@ export class InspeccionComponent implements OnInit {
   placaVehiculo: string = '';
   horasDisponibles: string[] = [];
   numeroIdentificacionCliente: string = '';
-  fechaSeleccionada: string = '';
-  horaSeleccionada: string = '';
+  fechaInspeccion: string = '';
+  horaInspeccion: string = '';
   lugarSeleccionado: string = '';
+  showPopup: boolean = false;
+  isCotizacion: boolean = false;
+  apellidoCliente: string = '';
+  nombreCompleto: string = '';
 
   constructor(private parametrosService: ParametrosService, private inspeccionService: InspeccionService) {}
   
@@ -37,6 +41,14 @@ export class InspeccionComponent implements OnInit {
     this.parametrosService.placaVehiculo$.subscribe(placa => {
       this.placaVehiculo = placa;
     });
+    this.parametrosService.apellidoCliente$.subscribe(apellido => {
+      this.apellidoCliente = apellido;
+    });
+
+    this.nombreCompleto = this.nombreCliente + ' ' + this.apellidoCliente;
+
+
+    this.actualizarHorasDisponibles();
 
   }
 
@@ -76,12 +88,17 @@ export class InspeccionComponent implements OnInit {
 
   // Función para manejar el envío del formulario
   agendarInspeccion(): void {
-    if(this.selectedMarca && this.selectedReferencia && this.selectedAno && this.valorAPagar > 0 && this.nombreCliente && this.placaVehiculo && this.fechaSeleccionada && this.horaSeleccionada && this.lugarSeleccionado) {
+    this.showPopup = true;
+    this.isCotizacion = false;
+    
+    
+    
+    if(this.fechaInspeccion && this.horaInspeccion && this.lugarSeleccionado) {
       console.log('Inspección agendada: ', {
-        numeroIdentificacionCliente: this.numeroIdentificacionCliente,
+        identificacionCLiente: this.numeroIdentificacionCliente,
         placa: this.placaVehiculo,
-        fecha: this.fechaSeleccionada,
-        hora: this.horaSeleccionada,
+        fecha: this.fechaInspeccion,
+        hora: this.horaInspeccion,
         lugar: this.lugarSeleccionado
       });
     } else {
@@ -98,5 +115,12 @@ export class InspeccionComponent implements OnInit {
     } else {
       this.valorAPagar = 0;
     }
+  }
+
+  closePopup(): void {
+    this.showPopup = false; // Ocultar el popup
+  }
+
+  onBuy(): void {
   }
 }

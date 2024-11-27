@@ -36,6 +36,9 @@ export class PopupComponent {
   @Input() lugarSeleccionado: string = '';
   
   valorSeguroFormatted: string = '';
+  showPopup: boolean = false;
+
+  
 
   constructor(private router: Router, private inspeccionService: InspeccionService) {}
 
@@ -65,19 +68,27 @@ export class PopupComponent {
     if (this.valorSeguro >= 1000000) {
       this.valorSeguroFormatted = this.valorSeguroFormatted.replace(',', "'");
     }
-
-    console.log('Formatted value:', this.valorSeguroFormatted);
   }
+  convertirHora(hora: string): string {
+    // Eliminar el AM/PM de la hora
+    const [horaParte, periodo] = hora.split(' '); // Dividir en hora y AM/PM
+
+    return `${horaParte}:00`;
+  }
+
+
 
   // Finalizar inspección
   finalizarInspeccion(): void {
+
+
     const inspeccion = {
       placa: this.placaVehiculo,
       fecha: this.fechaInspeccion,
-      hora: this.horaInspeccion,
+      hora: this.convertirHora(this.horaInspeccion),
       lugar: this.lugarSeleccionado,
       clienteId: this.numeroIdentificacionCliente,
-      estado: 'Pendiente',
+      estado: 'pendiente',
     };
 
     console.log('Inspección:', inspeccion);
@@ -94,6 +105,8 @@ export class PopupComponent {
     //     alert('Hubo un error al registrar la inspección.');
     //   }
     // );
+
+    this.router.navigate(['/cotizar']);
   }
 
   finalizarCompra(): void {
@@ -103,4 +116,10 @@ export class PopupComponent {
       this.router.navigate(['/checkout']);
     }
   }
+
+
+  closePopup(): void {
+    this.showPopup = false;
+  }
+  
 }

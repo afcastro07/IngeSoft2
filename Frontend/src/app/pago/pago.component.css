@@ -1,0 +1,23 @@
+:host {
+    top: 0px;
+    display: block;
+    position: relative;
+  }
+
+#FPago {
+    top: 170px;
+    position: relative;
+    background: url('/img/head.jpg') no-repeat center top;
+    display: grid;
+    grid-template-columns: 1fr ;
+    justify-content: center;
+    align-items: center;
+
+    .formP{
+        padding-top:1em;
+        p{
+            padding-bottom:3em;
+        }
+    }
+
+}

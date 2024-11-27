@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CotizadorService {
-  private apiUrl = 'http://localhost:8000/api/facecolda/';  // URL de tu API
+  // private apiUrl = 'http://34.57.207.46/api/facecolda/';  // URL de tu API
+  private apiUrl = '';  // URL de tu API
   
 
   constructor(private http: HttpClient) { }

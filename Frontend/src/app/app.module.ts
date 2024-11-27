@@ -6,6 +6,9 @@ import { HeaderComponent } from './header/header.component';
 import { CotizadorComponent } from './cotizador/cotizador.component';
 import { PopupComponent } from './popup/popup.component';
 import { InspeccionComponent } from './inspeccion/inspeccion.component';
+import { PasarelaPagoComponent } from './pasarela/pasarela.component';
+import { PdfPolizaComponent } from './pdf-poliza/pdf-poliza.component';
+import { pagoComponent } from './pago/pago.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +16,11 @@ import { InspeccionComponent } from './inspeccion/inspeccion.component';
     HeaderComponent,
     CotizadorComponent,
     PopupComponent,
-    InspeccionComponent
+    InspeccionComponent,
+    PasarelaPagoComponent,
+    PdfPolizaComponent,
+    pagoComponent,
+    
     // Otros componentes
   ],
   imports: [

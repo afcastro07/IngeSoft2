@@ -3,33 +3,45 @@
       <form novalidate class="ng-untouched ng-pristine ng-valid">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="mb-4 w-full">
-            <label for="nombreCliente" class="block text-sm font-medium">Nombre</label>
-            <input type="text" id="nombreCliente" name="nombreCliente" disabled value="nombreCliente" [ngModel]="nombreCliente"
+            <label for="nombreCompleto" class="block text-sm font-medium">Nombre</label>
+            <input type="text" id="nombreCompleto" name="nombreCompleto" disabled  [value]="nombreCompleto"  [(ngModel)]="nombreCompleto"
              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" value=" ">
           </div>
           <div class="mb-4">
             <label for="numeroIdentificacionCliente" class="block text-sm font-medium">Número de Identificación</label>
-            <input type="text" id="numeroIdentificacionCliente" name="numeroIdentificacionCliente" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ng-untouched ng-pristine ng-valid">
+            <input type="text" id="numeroIdentificacionCliente" name="numeroIdentificacionCliente"   [(ngModel)]="numeroIdentificacionCliente"
+             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ng-untouched ng-pristine ng-valid">
           </div>
           <div class="mb-4">
             <label for="placaVehiculo" class="block text-sm font-medium">Placa</label>
-            <input type="text" id="placaVehiculo" name="placaVehiculo" value="placaVehiculo" [ngModel]="placaVehiculo" disabled
+            <input type="text" id="placaVehiculo" name="placaVehiculo" value="placaVehiculo"  [(ngModel)]="placaVehiculo" disabled
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ng-untouched ng-pristine" disabled>
           </div>
           <div class="mb-4">
             <label for="fecha" class="block text-sm font-medium">Fecha</label>
-            <input type="date" [min]="getMinFecha()"  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" min="2024-11-26">
+            <input 
+              type="date" 
+              id="fechaInspeccion" 
+              [(ngModel)]="fechaInspeccion" 
+              (ngModelChange)="actualizarHorasDisponibles()" 
+              [min]="getMinFecha()" 
+              name="fechaInspeccion"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ng-untouched ng-pristine">
           </div>
           <div class="mb-4">
             <label for="hora" class="block text-sm font-medium">Hora</label>
-            <select [(ngModel)]="actualizarHorasDisponibles" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            <select 
+              [(ngModel)]="horaInspeccion" 
+              name="horaInspeccion" 
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            >
               <option value="" disabled selected>Selecciona una hora</option> <!-- Opción por defecto -->
               <option *ngFor="let hora of horasDisponibles" [value]="hora">{{ hora }}</option>
             </select>
           </div>
           <div class="mb-4">
             <label for="lugar" class="block text-sm font-medium">Lugar</label>
-            <select class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            <select  [(ngModel)]="lugarSeleccionado" name="lugarSeleccionado" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
               <option value>Selecciona un lugar</option>
               <option value="Sede Norte">Sede Norte</option>
               <option value="Sede Centro">Sede Centro</option>
@@ -39,8 +51,20 @@
           </div>
         </div>
         <div class="mt-6">
-          <button type="button" class="w-full bg-indigo-600 text-white px-3 py-2 rounded-md shadow-sm hover:bg-indigo-700" disabled>Agendar Inspección</button>
+          <button type="button"  (click)="agendarInspeccion()" class="w-full bg-indigo-600 text-white px-3 py-2 rounded-md shadow-sm hover:bg-indigo-700" >Agendar Inspección</button>
         </div>
+
+        <app-popup
+          *ngIf="showPopup"
+          [numeroIdentificacionCliente]="numeroIdentificacionCliente"
+          [fechaInspeccion]="fechaInspeccion"
+          [horaInspeccion]="horaInspeccion"
+          [lugarSeleccionado]="lugarSeleccionado"
+          [isCotizacion]="isCotizacion"
+          (close)="closePopup()"
+          (buy)="onBuy()">
+      </app-popup>
+
       </form>
     </div>
     <div class="imagen">

@@ -3,7 +3,7 @@
       <form novalidate>
         <h2 class="text-3xl font-bold mb-4 text-center">Checkout</h2>
         <p class="text-center text-gray-500">
-          Por favor diligencia los campos faltantes y verifica tu información para continuar el pago
+          Por favor complete los campos faltantes y verifique tu información para continuar el pago
         </p>
   
         <!-- Datos del Cliente -->
@@ -18,7 +18,7 @@
                 name="nombre"
                 required
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-                value=""
+                [value]="cliente.nombre"  [(ngModel)]="cliente.nombre"
               />
             </div>
             <div class="form-group">
@@ -29,7 +29,7 @@
                 name="apellido"
                 required
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-                value=""
+                [value]="cliente.apellido"  [(ngModel)]="cliente.apellido"
               />
             </div>
             <div class="form-group">
@@ -37,12 +37,14 @@
               <select
                 id="tipoDocumento"
                 name="tipoDocumento"
+                [(ngModel)]="cliente.tipoDocumento"
                 required
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
               >
+                <option value="" disabled>Selecciona tipo de identificación</option>
                 <option value="CC">Cédula de Ciudadanía</option>
-                <option value="TI">Tarjeta de Identidad</option>
-                <option value="RC">Registro Civil</option>
+                <option value="CE">Cédula de Extranjería</option>
+                <option value="PA">Pasaporte</option>
               </select>
             </div>
             <div class="form-group">
@@ -51,9 +53,9 @@
                 type="text"
                 id="numeroDocumento"
                 name="numeroDocumento"
-                required
-                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                [(ngModel)]="cliente.numeroDocumento"
                 value=""
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
               />
             </div>
           </div>
@@ -64,9 +66,8 @@
                 type="text"
                 id="telefono"
                 name="telefono"
-                required
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-                value=""
+                [value]="cliente.telefono"  [(ngModel)]="cliente.telefono"
               />
             </div>
             <div class="form-group">
@@ -77,19 +78,19 @@
                 name="direccion"
                 required
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-                value=""
+                [(ngModel)]="cliente.direccion"
               />
             </div>
           </div>
           <div class="form-group">
-            <label for="correoPago" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+            <label for="correo" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
             <input
               type="email"
-              id="correoPago"
-              name="correoPago"
+              id="correo"
+              name="correo"
               required
               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-              value=""
+              [(ngModel)]="cliente.correo"
             />
           </div>
         </div>
@@ -105,7 +106,7 @@
                 id="marca"
                 name="marca"
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-                value=""
+                [value]="vehiculo.marca"  [(ngModel)]="vehiculo.marca"
                 disabled
               />
             </div>
@@ -116,7 +117,7 @@
                 id="modelo"
                 name="modelo"
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-                value=""
+                [value]="vehiculo.modelo"  [(ngModel)]="vehiculo.modelo"
                 disabled
               />
             </div>
@@ -127,17 +128,17 @@
                 id="anio"
                 name="anio"
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-                value=""
+                [value]="vehiculo.anio"  [(ngModel)]="vehiculo.anio"
                 disabled
               />
             </div>
             <div class="form-group">
-              <label for="tipoCobertura" class="block text-sm font-medium text-gray-700">Tipo de Cobertura</label>
+              <label for="tipoCoberturaVehiculo" class="block text-sm font-medium text-gray-700">Tipo de Cobertura</label>
               <select
-                id="tipoCobertura"
-                name="tipoCobertura"
+                id="tipoCoberturaVehiculo"
+                name="tipoCoberturaVehiculo"
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-                disabled
+                [value]="vehiculo.tipoCoberturaVehiculo"  [(ngModel)]="vehiculo.tipoCoberturaVehiculo"
               >
                 <option value="">Selecciona una cobertura</option>
                 <option value="basica">Básica</option>
@@ -155,12 +156,11 @@
             <div class="form-group">
               <label for="valorAPagar" class="block text-sm font-medium text-gray-700">Valor a Pagar</label>
               <input
-                type="number"
                 id="valorAPagar"
                 name="valorAPagar"
-                required
+                disabled
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-                value="0"
+                [value]="cliente.valorAPagar"  [(ngModel)]="cliente.valorAPagar"
               />
             </div>
             <div class="form-group">
@@ -168,9 +168,9 @@
               <select
                 id="tipoPago"
                 name="tipoPago"
-                required
-                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-              >
+                [value]="pago.tipoPago" [(ngModel)]="pago.tipoPago"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                <option value="" disabled>Selecciona una forma de pago</option>
                 <option value="tarjeta">Tarjeta de Crédito</option>
                 <option value="PSE">PSE</option>
               </select>
@@ -211,12 +211,32 @@
         <!-- Botón de Envío -->
         <div class="submit-section mt-12">
           <button
-            type="submit"
+          (click)="pasarelaOpen()"
             class="w-full bg-indigo-600 text-white px-6 py-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500 text-lg btn-cotizar"
           >
             Realizar Pago
           </button>
         </div>
+
+        <app-pasarela
+            *ngIf="showPopup" 
+            [nombre]="cliente.nombre"
+            [apellido]="cliente.apellido"
+            [tipoDocumento]="cliente.tipoDocumento"
+            [numeroDocumento]="cliente.numeroDocumento"
+            [telefono]="cliente.telefono"
+            [direccion]="cliente.direccion"
+            [correo]="cliente.correo"
+            [marca]="vehiculo.marca"
+            [modelo]="vehiculo.modelo"
+            [anio]="vehiculo.anio"
+            [tipoCoberturaVehiculo]="vehiculo.tipoCoberturaVehiculo"
+            [valorAPagar]="cliente.valorAPagar"    
+            [tipoPago]="pago.tipoPago"    >
+
+
+          </app-pasarela>
+
       </form>
     </div>
   </div>

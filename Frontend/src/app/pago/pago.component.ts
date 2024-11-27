@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ParametrosService } from '../cotizador/parametrosService';
+import { PasarelaPagoComponent} from '../pasarela/pasarela.component';
 import { Router } from '@angular/router';
+import { CommonModule, NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pago',
   standalone: true,
+  imports: [NgFor, PasarelaPagoComponent, CommonModule, FormsModule],
   templateUrl: './pago.component.html',
   styleUrls: ['./pago.component.css']
 })
@@ -18,19 +22,21 @@ export class pagoComponent implements OnInit {
     apellido: '',
     tipoDocumento: '',
     numeroDocumento: '',
-    telefonoCliente: '',
+    telefono: '',
     direccion: '',
-    correoCliente: '',
+    correo: '',
     valorAPagar: 0,
     termsAccepted: false,
-    privacyAccepted: false
+    privacyAccepted: false,
+    numeroPoliza: ''
   };
 
   // Datos del vehículo
   vehiculo = {
-    marcaVehiculo: '',
-    modeloVehiculo: '',
-    anioVehiculo: '',
+    tipoVehiculo: '',
+    marca: '',
+    modelo: '',
+    anio: '',
     placa: '',
     tipoCoberturaVehiculo: ''
   };
@@ -44,38 +50,24 @@ export class pagoComponent implements OnInit {
 
   ngOnInit(): void {
     // Suscribirse a los valores del servicio
-    this.parametrosService.nombreCliente$.subscribe(nombre => {
-      this.cliente.nombre = nombre;
-    });
-    this.parametrosService.apellidoCliente$.subscribe(apellido => {
-      this.cliente.apellido = apellido;
-    });
-    this.parametrosService.correoCliente$.subscribe(telefonoCliente => {
-      this.cliente.telefonoCliente = telefonoCliente;
-    });
-    this.parametrosService.correoCliente$.subscribe(correoCliente => {
-      this.cliente.correoCliente = correoCliente;
-    });
-    this.parametrosService.marcaVehiculo$.subscribe(marcaVehiculo => {
-      this.vehiculo.marcaVehiculo = marcaVehiculo;
-    });
-    this.parametrosService.modeloVehiculo$.subscribe(modeloVehiculo => {
-      this.vehiculo.modeloVehiculo = modeloVehiculo;
-    });
-    this.parametrosService.anioVehiculo$.subscribe(anioVehiculo => {
-      this.vehiculo.anioVehiculo = anioVehiculo;
-    });
+    this.parametrosService.nombreCliente$.subscribe(nombre => this.cliente.nombre = nombre);
+    this.parametrosService.apellidoCliente$.subscribe(apellido => this.cliente.apellido = apellido);
+    this.parametrosService.correoCliente$.subscribe(correo => this.cliente.correo = correo);
+    this.parametrosService.celularCliente$.subscribe(telefono => this.cliente.telefono = telefono);
+    this.parametrosService.tipoVehiculo$.subscribe(tipo => this.vehiculo.tipoVehiculo = tipo);
+    this.parametrosService.placaVehiculo$.subscribe(placa => this.vehiculo.placa = placa);
+    this.parametrosService.marcaVehiculo$.subscribe(marca => this.vehiculo.marca = marca);
+    this.parametrosService.modeloVehiculo$.subscribe(modelo => this.vehiculo.modelo = modelo);
+    this.parametrosService.anioVehiculo$.subscribe(anio => this.vehiculo.anio = anio);
+    this.parametrosService.tipoCobertura$.subscribe(tipoCobertura => this.vehiculo.tipoCoberturaVehiculo = tipoCobertura);
+    this.parametrosService.valorSeguro$.subscribe(valor => this.cliente.valorAPagar = valor);
+    this.parametrosService.numeroPoliza$.subscribe(numeroPoliza => this.cliente.numeroPoliza = numeroPoliza);
     
   }
 
-  // Método para manejar el envío del pago
-  onSubmitForm() {
-    console.log("Enviando pago", this.cliente.valorAPagar, this.cliente.correoCliente);  
-    this.showPopup = true;
-
-    // Enviar los datos a la pasarela de pago
-    this.parametrosService.setNombreCliente(this.cliente.nombre);
-
+  pasarelaOpen(): void {
+    console.log("Abriendo pasarela de pago");
+    this.showPopup = true; 
   }
 
   closePopup(): void {

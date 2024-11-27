@@ -1,0 +1,8 @@
+{
+  "routes": [
+    "/checkout",
+    "/cotizar",
+    "/inspeccion",
+    "/pagocompletado"
+  ]
+}

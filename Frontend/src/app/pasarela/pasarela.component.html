@@ -1,0 +1,53 @@
+<div class="popup-overlay">
+    <div class="popup-content" (click)="$event.stopPropagation()">
+      <div class="p-4 md:p-5 space-y-4">
+        
+  
+        <!-- Logo de Mercado Pago -->
+        <div class="logo-mercado-pago">
+            <img src="img/mercadoPago.webp" alt="Logo Mercado Pago" class="w-1/4 mx-auto" />
+        </div>
+  
+        <!-- Campos de correo y forma de pago -->
+        <div class="mb-4">
+          <label for="correoCliente" class="block text-sm font-medium">Correo</label>
+          <input type="email" id="correoCliente" [(ngModel)]="correo" name="correoCliente"   placeholder="Ingrese su correo" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+        </div>
+  
+        <div class="mb-4">
+          <label for="tipoPago" class="block text-sm font-medium">Forma de Pago</label>
+          <select [(ngModel)]="tipoPago" name="tipoPago" value="tipoPago" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            <option value="" disabled>Seleccione la opción de pago</option>
+            <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+            <option value="pse">PSE</option>
+          </select>
+        </div>
+  
+        <!-- Mostrar campos de tarjeta solo si selecciona "Tarjeta de Crédito/Débito" -->
+        <div *ngIf="tipoPago === 'tarjeta'" class="mb-4">
+          <label for="numeroTarjeta" class="block text-sm font-medium">Número de Tarjeta</label>
+          <input type="text" id="numeroTarjeta"  name="numeroTarjeta" placeholder="Ingrese el número de tarjeta" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+        </div>
+  
+        <div *ngIf="tipoPago === 'tarjeta'" class="mb-4">
+          <label for="fechaVencimiento" class="block text-sm font-medium">Fecha de Vencimiento</label>
+          <input type="month" id="fechaVencimiento"  name="fechaVencimiento" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+        </div>
+  
+        <div *ngIf="tipoPago === 'tarjeta'" class="mb-4">
+          <label for="cvv" class="block text-sm font-medium">CVV</label>
+          <input type="text" id="cvv" name="cvv" placeholder="CVV" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+        </div>
+  
+        <!-- Footer con los botones -->
+        <div class="footerB flex flex-shrink-0 flex-wrap items-center justify-center p-4 border-t border-gray-200 rounded-b-md dark:border-gray-700">
+          <button (click)="onRealizarPago()" data-modal-hide="default-modal" type="button" class="botonComprar text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Comprar
+          </button>
+          <button (click)="onClose()" data-modal-hide="default-modal" type="button" class="botonSalir py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+            Salir
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
