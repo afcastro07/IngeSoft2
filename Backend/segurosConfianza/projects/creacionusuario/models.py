@@ -9,6 +9,7 @@ class Usuario(models.Model):
     telefono = models.CharField(max_length=20, null=True, blank=True)
     direccion = models.CharField(max_length=255, null=True, blank=True)
     contraseña = models.CharField(max_length=255, null=True, blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
     class Meta:
         db_table = 'Usuario'  # Nombre de la tabla en la base de datos
