@@ -9,6 +9,7 @@ import { InspeccionComponent } from './inspeccion/inspeccion.component';
 import { PasarelaPagoComponent } from './pasarela/pasarela.component';
 import { PdfPolizaComponent } from './pdf-poliza/pdf-poliza.component';
 import { pagoComponent } from './pago/pago.component';
+import { loginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { pagoComponent } from './pago/pago.component';
     PasarelaPagoComponent,
     PdfPolizaComponent,
     pagoComponent,
+    loginComponent,
     
     // Otros componentes
   ],

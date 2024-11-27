@@ -1,0 +1,50 @@
+
+<div id="login">
+
+    <div id="login">
+        <div class="max-w-sm mx-auto p-6 bg-white shadow-md rounded-md">
+            <h2 class="text-3xl font-semibold text-center mb-6">Iniciar Sesión</h2>
+        
+            <form (ngSubmit)="onSubmit()" class="space-y-6">
+            
+            <!-- Email -->
+            <div class="flex flex-col">
+                <label for="email" class="text-sm font-medium text-gray-700">Correo Electrónico</label>
+                <input 
+                id="email" 
+                [(ngModel)]="email" 
+                name="email"
+                type="email" 
+                class="mt-2 p-3 border border-gray-300 rounded-md" 
+                placeholder="Correo electrónico" 
+                required
+                />
+            </div>
+            
+            <!-- Password -->
+            <div class="flex flex-col">
+                <label for="password" class="text-sm font-medium text-gray-700">Contraseña</label>
+                <input 
+                id="password" 
+                [(ngModel)]="password" 
+                name="password"
+                type="password" 
+                class="mt-2 p-3 border border-gray-300 rounded-md" 
+                placeholder="Contraseña" 
+                required
+                />
+            </div>
+            
+            <!-- Submit Button -->
+            <div class="flex justify-center">
+                <button 
+                type="submit" 
+                class="w-full mt-4 p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700"
+                >
+                Iniciar Sesión
+                </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,16 +1,18 @@
-import {Routes} from '@angular/router';
-import {CotizadorComponent} from './cotizador/cotizador.component';
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter, Routes } from '@angular/router';
+import { provideClientHydration } from '@angular/platform-browser';
+import { CotizadorComponent } from './cotizador/cotizador.component';
+import { provideHttpClient } from '@angular/common/http';
 import { InspeccionComponent } from './inspeccion/inspeccion.component';
-
-import { PdfPolizaComponent } from './pdf-poliza/pdf-poliza.component';
 import { pagoComponent } from './pago/pago.component';
-import { PasarelaPagoComponent } from './pasarela/pasarela.component';
+import { PdfPolizaComponent } from './pdf-poliza/pdf-poliza.component';
+import { loginComponent } from './login/login.component';
 
-export const routes: Routes = [
+const routes: Routes = [
   { path: 'cotizar', component: CotizadorComponent },
   { path: 'inspeccion', component: InspeccionComponent },
   { path: 'checkout', component: pagoComponent },
   { path: 'pagocompletado', component: PdfPolizaComponent },
-  
+  { path: 'login', component: loginComponent },
   
 ];

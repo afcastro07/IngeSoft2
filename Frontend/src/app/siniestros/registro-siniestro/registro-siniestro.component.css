@@ -1,0 +1,11 @@
+:host {
+    top: 0px;
+    display: block;
+    position: relative;
+  }
+
+#rSinistro {
+    top: 170px;
+    position: relative;
+
+}

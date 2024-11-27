@@ -1,0 +1,58 @@
+
+<div id="rSinistro">
+
+    <!-- src/app/siniestros/registro-siniestro/registro-siniestro.component.html -->
+<div class="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-md">
+    <h2 class="text-3xl font-semibold text-center mb-6">Registro de Siniestro Vehicular</h2>
+    <form [formGroup]="siniestroForm" (ngSubmit)="onSubmit()" class="space-y-6">
+  
+      <!-- Número de Reporte -->
+      <div class="flex flex-col">
+        <label for="numeroReporte" class="text-sm font-medium text-gray-700">Número de Reporte</label>
+        <input id="numeroReporte" formControlName="numeroReporte" class="mt-2 p-3 border border-gray-300 rounded-md" type="text" placeholder="Número de Reporte" />
+      </div>
+  
+      <!-- Fecha -->
+      <div class="flex flex-col">
+        <label for="fecha" class="text-sm font-medium text-gray-700">Fecha</label>
+        <input id="fecha" formControlName="fecha" class="mt-2 p-3 border border-gray-300 rounded-md" type="date" />
+      </div>
+  
+      <!-- Descripción -->
+      <div class="flex flex-col">
+        <label for="descripcion" class="text-sm font-medium text-gray-700">Descripción</label>
+        <textarea id="descripcion" formControlName="descripcion" class="mt-2 p-3 border border-gray-300 rounded-md" rows="4" placeholder="Descripción del siniestro"></textarea>
+      </div>
+  
+      <!-- Estado -->
+      <div class="flex flex-col">
+        <label for="estado" class="text-sm font-medium text-gray-700">Estado</label>
+        <select id="estado" formControlName="estado" class="mt-2 p-3 border border-gray-300 rounded-md">
+          <option value="pendiente">Pendiente</option>
+          <option value="resuelto">Resuelto</option>
+          <option value="en proceso">En Proceso</option>
+        </select>
+      </div>
+  
+      <!-- Placa del Vehículo -->
+      <div class="flex flex-col">
+        <label for="placaVehiculo" class="text-sm font-medium text-gray-700">Placa del Vehículo</label>
+        <input id="placaVehiculo" formControlName="placaVehiculo" class="mt-2 p-3 border border-gray-300 rounded-md" type="text" placeholder="Placa del vehículo" />
+      </div>
+  
+      <!-- Responsable -->
+      <div class="flex flex-col">
+        <label for="responsable" class="text-sm font-medium text-gray-700">Responsable</label>
+        <input id="responsable" formControlName="responsable" class="mt-2 p-3 border border-gray-300 rounded-md" type="text" placeholder="Responsable del siniestro" />
+      </div>
+  
+      <!-- Botón de Enviar -->
+      <div class="flex justify-center">
+        <button type="submit" [disabled]="!siniestroForm.valid" class="w-full mt-4 p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700">
+          Registrar Siniestro
+        </button>
+      </div>
+    </form>
+  </div>
+
+  </div>

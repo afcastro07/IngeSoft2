@@ -3,6 +3,7 @@
     "/checkout",
     "/cotizar",
     "/inspeccion",
+    "/login",
     "/pagocompletado"
   ]
 }
