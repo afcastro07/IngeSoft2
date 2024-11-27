@@ -93,18 +93,18 @@ export class PopupComponent {
 
     console.log('Inspección:', inspeccion);
 
-    // // Llamar al servicio para enviar la solicitud POST
-    // this.inspeccionService.crearInspeccion(inspeccion).subscribe(
-    //   response => {
-    //     console.log('Inspección registrada exitosamente', response);
-    //     alert('La inspección ha sido registrada exitosamente.');
-    //     this.router.navigate(['/inspeccion']);
-    //   },
-    //   error => {
-    //     console.error('Error al registrar la inspección', error);
-    //     alert('Hubo un error al registrar la inspección.');
-    //   }
-    // );
+    // Llamar al servicio para enviar la solicitud POST
+    this.inspeccionService.crearInspeccion(inspeccion).subscribe(
+      response => {
+        console.log('Inspección registrada exitosamente', response);
+        alert('La inspección ha sido registrada exitosamente.');
+        this.router.navigate(['/inspeccion']);
+      },
+      error => {
+        console.error('Error al registrar la inspección', error);
+        alert('Hubo un error al registrar la inspección.');
+      }
+    );
 
     this.router.navigate(['/cotizar']);
   }

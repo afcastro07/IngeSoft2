@@ -85,62 +85,55 @@ export class PdfPolizaComponent implements OnInit {
   
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);  // Black color
-    doc.text(formattedDate, 170, 20);  // Position it at the top-right corner
+    doc.text(formattedDate, 170, 15);  // Position it at the top-right corner
   
     // Set font for the entire document
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(12);
   
-  
     // Draw border around the content area
     doc.setDrawColor(0, 0, 0);
     doc.setLineWidth(0.5);
     doc.rect(10, 10, 190, 277);  // Draw rectangle
-
-
-          
+  
     // Insurance Details Header
     doc.setFontSize(14);
     doc.setTextColor(0, 0, 255);  // Blue for headers
-    doc.text("Detalles del Seguro", 20, 180);
+    doc.text("Detalles del Seguro", 20, 50);  // Adjusted position
   
     // Policy Number and Dates
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);  // Reset color to black
-    doc.text(`Número de Póliza: ${this.numeroPoliza}`, 20, 220);
-    doc.text(`Fecha de Inicio: ${this.fechaInicio}`, 20, 230);
-    doc.text(`Fecha de Vencimiento: ${this.fechaFin}`, 20, 240);
-
+    doc.text(`Número de Póliza: ${this.numeroPoliza}`, 20, 60);  // Adjusted position
+    doc.text(`Fecha de Inicio: ${this.fechaInicio}`, 20, 70);  // Adjusted position
+    doc.text(`Fecha de Vencimiento: ${this.fechaFin}`, 20, 80);  // Adjusted position
     
-  
     // Client Information Header
     doc.setFontSize(14);
     doc.setTextColor(0, 0, 255);  // Blue for headers
-    doc.text("Datos del Asegurado", 20, 40);
+    doc.text("Datos del Asegurado", 20, 100);
   
     // Client Information
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);  // Reset color to black
-    doc.text(`Nombre: ${this.nombre} ${this.apellido}`, 20, 50);
-    doc.text(`Identificación: ${this.numeroDocumento}`, 20, 60);
-    doc.text(`Correo: ${this.correo}`, 20, 70);
-    doc.text(`Teléfono: ${this.telefono}`, 20, 80);
+    doc.text(`Nombre: ${this.nombre} ${this.apellido}`, 20, 110);
+    doc.text(`Identificación: ${this.numeroDocumento}`, 20, 120);
+    doc.text(`Correo: ${this.correo}`, 20, 130);
+    doc.text(`Teléfono: ${this.telefono}`, 20, 140);
   
     // Vehicle Information Header
     doc.setFontSize(14);
     doc.setTextColor(0, 0, 255);  // Blue for headers
-    doc.text("Detalles del Vehículo Asegurado", 20, 100);
+    doc.text("Detalles del Vehículo Asegurado", 20, 160);
   
     // Vehicle Information
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);  // Reset color to black
-    doc.text(`Placa: ${this.placa}`, 20, 110);
-    doc.text(`Marca: ${this.marca}`, 20, 120);
-    doc.text(`Modelo: ${this.modelo}`, 20, 130);
-    doc.text(`Año: ${this.anio}`, 20, 140);
-    doc.text(`Cobertura: ${this.tipoCoberturaVehiculo}`, 20, 150);
-
-
+    doc.text(`Placa: ${this.placa}`, 20, 170);
+    doc.text(`Marca: ${this.marca}`, 20, 180);
+    doc.text(`Modelo: ${this.modelo}`, 20, 190);
+    doc.text(`Año: ${this.anio}`, 20, 200);
+    doc.text(`Cobertura: ${this.tipoCoberturaVehiculo}`, 20, 210);
   
     // Footer
     doc.setFontSize(10);

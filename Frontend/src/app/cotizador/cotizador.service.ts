@@ -2,13 +2,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CotizadorService {
-  // private apiUrl = 'http://34.57.207.46/api/facecolda/';  // URL de tu API
-  private apiUrl = '';  // URL de tu API
+  private apiUrl = `${environment.BASE_PATH}/api/facecolda`;  // URL de tu API
+  
   
 
   constructor(private http: HttpClient) { }

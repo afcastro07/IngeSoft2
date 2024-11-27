@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    BASE_PATH: 'https://api.yourdomain.com' // Base URL for production
+    BASE_PATH: 'http://35.184.86.195/' // Base URL for production
   };

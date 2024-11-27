@@ -137,14 +137,14 @@ DATABASES = {
         'PORT': '', 
     },
       
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'SC-inspeccion-vehicular',        
-    #     'USER': 'developer',                     
-    #     'PASSWORD': '8)Dxe(ee2fIcX7~|',           
-    #     'HOST': '104.154.140.136',                      
-    #     'PORT': '3306', 
-    # },  
+    'inspeccion': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'SC-inspeccion-vehicular',        
+        'USER': 'developer',                     
+        'PASSWORD': '8)Dxe(ee2fIcX7~|',           
+        'HOST': '104.154.140.136',                      
+        'PORT': '3306', 
+    },  
     
     'facecolda': {
         'ENGINE': 'django.db.backends.mysql',

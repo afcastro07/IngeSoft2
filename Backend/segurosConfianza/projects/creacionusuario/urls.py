@@ -4,7 +4,7 @@ from .views import InspeccionViewSet
 
 # Crear un router e incluir el viewset de Inspección
 router = DefaultRouter()
-router.register(r'inspeccion', InspeccionViewSet)  # "inspeccion" es el nombre de tu endpoint
+router.register(r'creacionusuario', InspeccionViewSet)  
 
 urlpatterns = [
     path('', include(router.urls)),  # Incluir las rutas del router
